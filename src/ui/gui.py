@@ -9,7 +9,7 @@ from src.ui.ecran_themes import EcranThemes
 from src.ui.menu_principal import MenuPrincipal
 from src.ui.style import appliquer_style
 
-icon = str(Path(__file__).parent.parent.parent /"data" / "global"/ "assets"/ "images"/ "logo"/"Lone Chronicles.png" )
+icon = str(Path(__file__).parent.parent.parent /"data" / "global"/ "assets"/ "images"/"Lone Chronicles.png" )
 
 class FenetrePrincipale(QMainWindow):
     """Fenêtre principale de l'application"""
@@ -38,6 +38,13 @@ class FenetrePrincipale(QMainWindow):
 
 def lancer_interface():
     app = QApplication([])
+    app.setStyleSheet("""
+    QWidget {
+    border: 1px solid red;
+    }
+    QLayout {
+    background-color: rgba(255, 0, 0, 50);
+    }""")
     fenetre = FenetrePrincipale()
     fenetre.show()
     app.exec()

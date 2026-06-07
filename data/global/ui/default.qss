@@ -213,11 +213,3 @@ QTabBar::tab:selected {
 QTabBar::tab:hover {
     background-color: #454545;  /* Survol discret */
 }
-
-QWidget {
-    border: 1px solid red;
-}
-
-QLayout {
-    background-color: rgba(255, 0, 0, 50);
-}

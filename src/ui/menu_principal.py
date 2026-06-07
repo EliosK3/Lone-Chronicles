@@ -1,4 +1,5 @@
 from PyQt6.QtCore import Qt
+from PyQt6.QtGui import QIcon
 from PyQt6.QtWidgets import QWidget, QGridLayout, QVBoxLayout, QHBoxLayout, QLabel, QPushButton, QApplication
 
 
@@ -15,6 +16,8 @@ class MenuPrincipal(QWidget):
 
         self.right_widget = QWidget()
         self.right_layout = QVBoxLayout(self.right_widget)
+        btn_mode = QPushButton("☀︎ | ☽")
+        self.right_layout.addWidget(btn_mode, Qt.AlignmentFlag.AlignTop)
         self.main_layout.addWidget(self.right_widget, 0, 0, 3, 1)
 
         self.left_widget = QWidget()
