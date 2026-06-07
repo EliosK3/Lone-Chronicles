@@ -1,0 +1,223 @@
+/*
+ * default - Qt Style Sheet
+ * Created: 07/06/2026
+ *
+ * QSS Toolkit Quick Tips:
+ * - Press Ctrl+Space (Cmd+Space) for intelligent auto-completion
+ * - Use Ctrl+/ (Cmd+/) to comment/uncomment code blocks
+ * - Use the QSS Colors panel and editor context menu to save or insert colors
+ */
+
+/* Add your QSS ui here */
+
+/* ========== STYLE GLOBAL NEUTRE (MODE SOMBRE ADOUCI) ========== */
+
+/* Fenêtre principale */
+QMainWindow {
+    background-color: #2d2d2d;  /* Gris foncé (pas noir pur) */
+}
+
+/* Labels */
+QLabel {
+    color: #e0e0e0;  /* Blanc cassé (doux pour les yeux) */
+    font-family: 'Arial';
+    font-size: 14px;
+    margin: 5px;
+}
+
+/* Boutons */
+QPushButton {
+    background-color: #3a3a3a;  /* Gris foncé */
+    color: #e0e0e0;
+    border: 1px solid #505050;  /* Bordure gris moyen */
+    border-radius: 5px;
+    padding: 8px 16px;
+    font-family: 'Arial';
+    font-size: 14px;
+    min-width: 100px;
+}
+QPushButton:hover {
+    background-color: #454545;  /* Gris légèrement plus clair au survol */
+    border: 1px solid #606060;
+}
+QPushButton:pressed {
+    background-color: #2a2a2a;  /* Gris plus foncé */
+    border: 1px solid #505050;
+}
+QPushButton:disabled {
+    background-color: #3a3a3a;
+    color: #808080;  /* Gris désaturé */
+    border: 1px solid #505050;
+}
+
+/* Champs de texte (QLineEdit) */
+QLineEdit {
+    background-color: #3a3a3a;
+    color: #e0e0e0;
+    border: 1px solid #505050;
+    border-radius: 5px;
+    padding: 5px;
+    font-family: 'Arial';
+    font-size: 14px;
+    selection-background-color: #505050;  /* Sélection discrète */
+}
+
+/* Listes (QListWidget) */
+QListWidget {
+    background-color: #3a3a3a;
+    color: #e0e0e0;
+    border: 1px solid #505050;
+    border-radius: 5px;
+    padding: 5px;
+    font-family: 'Arial';
+    font-size: 14px;
+}
+QListWidget::item {
+    padding: 5px;
+    border-bottom: 1px solid #2d2d2d;  /* Séparateur très discret */
+}
+QListWidget::item:selected {
+    background-color: #505050;  /* Gris moyen pour la sélection */
+    color: #e0e0e0;
+}
+
+/* Menus déroulants (QComboBox) */
+QComboBox {
+    background-color: #3a3a3a;
+    color: #e0e0e0;
+    border: 1px solid #505050;
+    border-radius: 5px;
+    padding: 5px;
+    font-family: 'Arial';
+    font-size: 14px;
+}
+QComboBox::drop-down {
+    border: 0px;
+    background-color: #454545;
+}
+QComboBox QAbstractItemView {
+    background-color: #3a3a3a;
+    border: 1px solid #505050;
+    color: #e0e0e0;
+    selection-background-color: #505050;
+}
+
+/* Cases à cocher (QCheckBox) */
+QCheckBox {
+    spacing: 5px;
+    font-family: 'Arial';
+    font-size: 14px;
+    color: #e0e0e0;
+}
+QCheckBox::indicator {
+    width: 16px;
+    height: 16px;
+    border: 1px solid #505050;
+    border-radius: 2px;
+}
+QCheckBox::indicator:checked {
+    background-color: #505050;  /* Cochette gris moyen */
+    border: 1px solid #606060;
+}
+
+/* Boutons radio (QRadioButton) */
+QRadioButton {
+    spacing: 5px;
+    font-family: 'Arial';
+    font-size: 14px;
+    color: #e0e0e0;
+}
+QRadioButton::indicator {
+    width: 16px;
+    height: 16px;
+    border: 1px solid #505050;
+    border-radius: 8px;
+}
+QRadioButton::indicator:checked {
+    background-color: #505050;  /* Point gris moyen */
+    border: 1px solid #606060;
+}
+
+/* Zones de texte multi-lignes (QTextEdit, QPlainTextEdit) */
+QTextEdit, QPlainTextEdit {
+    background-color: #3a3a3a;
+    color: #e0e0e0;
+    border: 1px solid #505050;
+    border-radius: 5px;
+    padding: 5px;
+    font-family: 'Arial';
+    font-size: 14px;
+    selection-background-color: #505050;
+}
+
+/* Barres de défilement */
+QScrollBar:vertical, QScrollBar:horizontal {
+    background: #2d2d2d;
+    border: 1px solid #505050;
+    border-radius: 5px;
+    margin: 0px;
+}
+QScrollBar::handle:vertical, QScrollBar::handle:horizontal {
+    background: #505050;  /* Gris moyen pour la poignée */
+    border-radius: 5px;
+    min-height: 20px;
+    min-width: 20px;
+}
+QScrollBar::handle:vertical:hover, QScrollBar::handle:horizontal:hover {
+    background: #606060;  /* Gris légèrement plus clair au survol */
+}
+QScrollBar::add-line, QScrollBar::sub-line {
+    background: none;
+    border: none;
+}
+
+/* Groupes (QGroupBox) */
+QGroupBox {
+    border: 1px solid #505050;
+    border-radius: 5px;
+    margin-top: 10px;
+    padding: 10px;
+    font-family: 'Arial';
+    font-size: 14px;
+    color: #e0e0e0;
+    background-color: #2d2d2d;  /* Fond légèrement plus clair que la fenêtre */
+}
+QGroupBox::title {
+    subcontrol-origin: margin;
+    left: 10px;
+    padding: 0 5px;
+    color: #e0e0e0;
+}
+
+/* Onglets (QTabWidget) */
+QTabWidget::pane {
+    border: 1px solid #505050;
+    border-radius: 5px;
+    background-color: #3a3a3a;
+}
+QTabBar::tab {
+    background-color: #3a3a3a;
+    color: #e0e0e0;
+    border: 1px solid #505050;
+    border-bottom: none;
+    border-radius: 5px 5px 0 0;
+    padding: 5px 10px;
+    font-family: 'Arial';
+    font-size: 14px;
+}
+QTabBar::tab:selected {
+    background-color: #505050;
+    border-bottom: 1px solid #505050;
+    color: #e0e0e0;
+}
+QTabBar::tab:hover {
+    background-color: #454545;  /* Survol discret */
+}
+
+QWidget {
+    border: 1px solid red;
+}
+
+QLayout {
+    background-color: rgba(255, 0, 0, 50);
+}
