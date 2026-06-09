@@ -8,6 +8,7 @@ from PyQt6.QtWidgets import QWidget, QGridLayout, QHBoxLayout, QPushButton, QLab
 logo_sf = str(Path(__file__).parent.parent.parent /"data" / "global"/ "assets"/ "images"/"bouton_sf.png" )
 logo_fantasy = str(Path(__file__).parent.parent.parent /"data" / "global"/ "assets"/ "images"/"bouton_fantasy.png" )
 logo_horreur = str(Path(__file__).parent.parent.parent /"data" / "global"/ "assets"/ "images"/"bouton_horreur.png" )
+logo_pirate = str(Path(__file__).parent.parent.parent /"data" / "global"/ "assets"/ "images"/"bouton_pirate.png" )
 
 
 class PicButton(QAbstractButton):
@@ -26,6 +27,7 @@ class PicButton(QAbstractButton):
 class EcranThemes(QWidget):
     def __init__(self, stacked_widget):
         super().__init__()
+
         self.stacked_widget = stacked_widget
         self.main_layout = QGridLayout(self)
         self.main_layout.setContentsMargins(5, 5, 5, 5)
@@ -47,11 +49,26 @@ class EcranThemes(QWidget):
         btn_fantasy.clicked.connect(self.fantasy_select)
         self.main_layout.addWidget(btn_fantasy,1,2,3,1)
 
+        btn_pirate = PicButton(QPixmap(logo_pirate))
+        btn_pirate.clicked.connect(self.select_pirate)
+
         self.label = QLabel('Choisissez votre thème')
-        self.main_layout.addWidget(self.label,0,1,Qt.AlignmentFlag.AlignCenter)
+        self.main_layout.addWidget(self.label,0,0,1,3,Qt.AlignmentFlag.AlignCenter)
+
+        self.bottom_widget = QWidget(self)
+        self.bottom_layout = QHBoxLayout(self.bottom_widget)
+
+        self.valider = QPushButton('validation du thème')
+        self.valider.clicked.connect(self.valider_theme)
+        self.bottom_layout.addWidget(self.valider)
 
         self.label = QLabel('Description du thème')
-        self.main_layout.addWidget(self.label,4,1,Qt.AlignmentFlag.AlignCenter)
+        self.bottom_layout.addWidget(self.label)
+
+        self.retour = QPushButton('Retour au menu principal')
+        self.retour.clicked.connect(self.retour_menu)
+        self.bottom_layout.addWidget(self.retour)
+        self.main_layout.addWidget(self.bottom_widget, 4,0,1,3)
 
     def horreur_select(self):
         theme = "Horreur Lovecraftienne"
@@ -64,3 +81,13 @@ class EcranThemes(QWidget):
     def fantasy_select(self):
         theme = "Fantasy"
         return theme
+
+    def select_pirate(self):
+        theme = "Pirate"
+        return theme
+
+    def retour_menu(self):
+        self.stacked_widget.setCurrentIndex(0)
+
+    def valider_theme(self):
+        self.stacked_widget.setCurrentIndex(2)

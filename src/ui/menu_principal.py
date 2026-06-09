@@ -17,11 +17,13 @@ class MenuPrincipal(QWidget):
         self.right_widget = QWidget()
         self.right_layout = QVBoxLayout(self.right_widget)
         btn_mode = QPushButton("☀︎ | ☽")
-        self.right_layout.addWidget(btn_mode, Qt.AlignmentFlag.AlignTop)
+        self.right_layout.addWidget(btn_mode, 0,Qt.AlignmentFlag.AlignTop)
         self.main_layout.addWidget(self.right_widget, 0, 0, 3, 1)
 
         self.left_widget = QWidget()
         self.left_layout = QVBoxLayout(self.left_widget)
+        btn_editor = QPushButton("éditeur")
+        self.left_layout.addWidget(btn_editor, 0,Qt.AlignmentFlag.AlignTop)
         self.main_layout.addWidget(self.left_widget, 0, 6, 3, 1)
 
         self.bottom_widget = QWidget()

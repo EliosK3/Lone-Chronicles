@@ -20,7 +20,7 @@ class FenetrePrincipale(QMainWindow):
         self.showMaximized()
         self.setWindowIcon(QIcon(icon))
 
-        appliquer_style("data/global/ui/default.qss")
+        #appliquer_style("data/global/ui/default.qss")
         # Créer le stacked widget
         self.stacked_widget = QStackedWidget()
         self.setCentralWidget(self.stacked_widget)
