@@ -5,6 +5,12 @@ from PyQt6.QtCore import Qt, QSize
 from PyQt6.QtGui import QIcon, QPixmap, QPainter
 from PyQt6.QtWidgets import QWidget, QGridLayout, QHBoxLayout, QPushButton, QLabel, QAbstractButton
 
+"""
+todo:
+passer theme à selec perso
+def ici quelle ui final utilisé si diff?
+appliqué changement de style à la validation
+"""
 logo_sf = str(Path(__file__).parent.parent.parent /"data" / "global"/ "assets"/ "images"/"bouton_sf.png" )
 logo_fantasy = str(Path(__file__).parent.parent.parent /"data" / "global"/ "assets"/ "images"/"bouton_fantasy.png" )
 logo_horreur = str(Path(__file__).parent.parent.parent /"data" / "global"/ "assets"/ "images"/"bouton_horreur.png" )

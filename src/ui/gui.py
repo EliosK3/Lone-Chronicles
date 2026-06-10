@@ -7,8 +7,12 @@ from PyQt6.QtWidgets import QApplication, QMainWindow, QStackedWidget
 
 from src.ui.ecran_themes import EcranThemes
 from src.ui.menu_principal import MenuPrincipal
+from src.ui.selection_perso import EcranSelecPerso
 from src.ui.style import appliquer_style
-
+"""
+todo:
+branché autre class quand créer
+"""
 icon = str(Path(__file__).parent.parent.parent /"data" / "global"/ "assets"/ "images"/"Lone Chronicles.png" )
 
 class FenetrePrincipale(QMainWindow):
@@ -28,10 +32,12 @@ class FenetrePrincipale(QMainWindow):
         #créer les écrans
         self.menu_principal = MenuPrincipal(self.stacked_widget)
         self.ecran_theme = EcranThemes(self.stacked_widget)
+        self.ecran_select_perso = EcranSelecPerso(self.stacked_widget)
 
         #lié les écrans au widget
         self.stacked_widget.addWidget(self.menu_principal)
         self.stacked_widget.addWidget(self.ecran_theme)
+        self.stacked_widget.addWidget(self.ecran_select_perso)
 
         #afficher le widget
         self.stacked_widget.setCurrentIndex(0)
