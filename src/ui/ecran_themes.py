@@ -11,10 +11,15 @@ logo_horreur = str(Path(__file__).parent.parent.parent /"data" / "global"/ "asse
 logo_pirate = str(Path(__file__).parent.parent.parent /"data" / "global"/ "assets"/ "images"/"bouton_pirate.png" )
 
 
+from PyQt6.QtCore import QPropertyAnimation, QEasingCurve, QSize, Qt
+from PyQt6.QtGui import QPixmap, QPainter, QEnterEvent
+from PyQt6.QtWidgets import QAbstractButton
+
 class PicButton(QAbstractButton):
     def __init__(self, pixmap, parent=None):
         super(PicButton, self).__init__(parent)
         self.pixmap = pixmap
+        self.setFixedSize(450,650)
 
     def paintEvent(self, event):
         painter = QPainter(self)
@@ -35,6 +40,13 @@ class EcranThemes(QWidget):
         self.main_layout.setSpacing(2)
         self.theme = None
 
+        # Dictionnaire des descriptions
+        self.theme_descriptions = {
+            "Horreur": "Plongez dans un univers sombre et mystérieux, inspiré des œuvres de H.P. Lovecraft. Affrontez des horreurs indicibles et des énigmes complexes.",
+            "Science-Fiction": "Explorez des galaxies lointaines, des technologies avancées et des civilisations extraterrestres.",
+            "Fantasy": "Aventurez-vous dans un monde magique peuplé de créatures légendaires, de sorciers et de quêtes épiques.",
+            "Pirate": "Naviguez sur les mers dangereuses, à la recherche de trésors et de gloire, mais méfiez-vous des pirates rivaux et des tempêtes."
+        }
 
         btn_horreur = PicButton(QPixmap(logo_horreur))
         btn_horreur.clicked.connect(self.horreur_select)
@@ -51,9 +63,10 @@ class EcranThemes(QWidget):
 
         btn_pirate = PicButton(QPixmap(logo_pirate))
         btn_pirate.clicked.connect(self.select_pirate)
+        self.main_layout.addWidget(btn_pirate,1,3,3,1)
 
-        self.label = QLabel('Choisissez votre thème')
-        self.main_layout.addWidget(self.label,0,0,1,3,Qt.AlignmentFlag.AlignCenter)
+        self.titre = QLabel('Choisissez votre thème')
+        self.main_layout.addWidget(self.titre,0,0,1,4,Qt.AlignmentFlag.AlignCenter)
 
         self.bottom_widget = QWidget(self)
         self.bottom_layout = QHBoxLayout(self.bottom_widget)
@@ -63,28 +76,32 @@ class EcranThemes(QWidget):
         self.bottom_layout.addWidget(self.valider)
 
         self.label = QLabel('Description du thème')
-        self.bottom_layout.addWidget(self.label)
+        self.bottom_layout.addWidget(self.label, 1, Qt.AlignmentFlag.AlignCenter)
 
         self.retour = QPushButton('Retour au menu principal')
         self.retour.clicked.connect(self.retour_menu)
         self.bottom_layout.addWidget(self.retour)
-        self.main_layout.addWidget(self.bottom_widget, 4,0,1,3)
+        self.main_layout.addWidget(self.bottom_widget, 4,0,1,4)
 
     def horreur_select(self):
-        theme = "Horreur Lovecraftienne"
-        return theme
+        self.theme = "Horreur"
+        self.label.setText(self.theme_descriptions[self.theme])
+        return self.theme
 
     def sf_select(self):
-        theme = "Science-Fiction"
-        return theme
+        self.theme = "Science-Fiction"
+        self.label.setText(self.theme_descriptions[self.theme])
+        return self.theme
 
     def fantasy_select(self):
-        theme = "Fantasy"
-        return theme
+        self.theme = "Fantasy"
+        self.label.setText(self.theme_descriptions[self.theme])
+        return self.theme
 
     def select_pirate(self):
-        theme = "Pirate"
-        return theme
+        self.theme = "Pirate"
+        self.label.setText(self.theme_descriptions[self.theme])
+        return self.theme
 
     def retour_menu(self):
         self.stacked_widget.setCurrentIndex(0)
