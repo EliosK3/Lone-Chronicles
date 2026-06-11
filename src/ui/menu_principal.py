@@ -9,6 +9,7 @@ class MenuPrincipal(QWidget):
     """ écran du menu principal"""
     def __init__(self, stacked_widget):
         super().__init__()
+        self.editor_window = Editor()
         self.stacked_widget = stacked_widget
 
         # Layout principal : QGridLayout avec 3 colonnes
@@ -61,4 +62,4 @@ class MenuPrincipal(QWidget):
         self.stacked_widget.setCurrentIndex(1)
 
     def ouvrir_editeur(self):
-        Editor.show()
+        self.editor_window.show()
