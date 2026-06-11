@@ -5,9 +5,10 @@ from PyQt6.QtCore import QSize
 from PyQt6.QtGui import QIcon
 from PyQt6.QtWidgets import QApplication, QMainWindow, QStackedWidget
 
+from src.ui.choix_perso import EcranSelecPerso
 from src.ui.ecran_themes import EcranThemes
 from src.ui.menu_principal import MenuPrincipal
-from src.ui.selection_perso import EcranSelecPerso
+
 from src.ui.style import appliquer_style
 """
 todo:

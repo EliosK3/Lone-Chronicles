@@ -2,6 +2,8 @@ from PyQt6.QtCore import Qt
 from PyQt6.QtGui import QIcon
 from PyQt6.QtWidgets import QWidget, QGridLayout, QVBoxLayout, QHBoxLayout, QLabel, QPushButton, QApplication
 
+from src.ui.editor import Editor
+
 
 class MenuPrincipal(QWidget):
     """ écran du menu principal"""
@@ -23,6 +25,7 @@ class MenuPrincipal(QWidget):
         self.left_widget = QWidget()
         self.left_layout = QVBoxLayout(self.left_widget)
         btn_editor = QPushButton("éditeur")
+        btn_editor.clicked.connect(self.ouvrir_editeur)
         self.left_layout.addWidget(btn_editor, 0,Qt.AlignmentFlag.AlignTop)
         self.main_layout.addWidget(self.left_widget, 0, 6, 3, 1)
 
@@ -56,3 +59,6 @@ class MenuPrincipal(QWidget):
 
     def selection_theme(self):
         self.stacked_widget.setCurrentIndex(1)
+
+    def ouvrir_editeur(self):
+        Editor.show()
