@@ -1,0 +1,83 @@
+name: "La Taverne Maudite"
+theme: "fantasy"
+description: "Une aventure dans une taverne hantée par des créatures obscures."
+start_scene: "entree_taverne"
+
+scenes:
+  entree_taverne:
+    description: |
+      Tu entres dans une taverne sombre. L'odeur de bière rance flotte dans l'air.
+      Le barman te regarde avec méfiance, tandis que des ombres bougent dans les coins.
+    choices:
+      - text: "Parler au barman"
+        next_scene: "barman"
+        condition: null
+        cost: null
+      - text: "Chercher un voleur discret"
+        next_scene: "voleur"
+        condition: { variable: "reputation", operator: ">", value: 50 }
+        cost: { resource: "or", value: -10 }
+
+  barman:
+    description: |
+      Le barman essuie un verre en te dévisageant.
+      "Qu'est-ce que tu veux, étranger ?" grogne-t-il.
+    choices:
+      - text: "Demander une bière"
+        next_scene: "biere"
+      - text: "Demander des informations sur la rumeur de monstres"
+        next_scene: "rumeur_monstres"
+        condition: { variable: "charisme", operator: ">=", value: 12 }
+
+  voleur:
+    description: |
+      Tu repères un homme aux yeux fuyants dans un coin. Il semble nerveux.
+      "Psst... Tu cherches quelque chose ?" murmure-t-il.
+    choices:
+      - text: "Lui demander de l'aide pour voler le barman"
+        next_scene: "vol_barman"
+      - text: "L'ignorer et retourner vers l'entrée"
+        next_scene: "entree_taverne"
+
+  biere:
+    description: "Tu bois une bière tiède. Rien de spécial ne se passe."
+    choices:
+      - text: "Retourner à l'entrée"
+        next_scene: "entree_taverne"
+
+  rumeur_monstres:
+    description: |
+      Le barman baisse la voix : "Des gens disparaissent la nuit...
+      On dit que c'est l'œuvre d'un vampire. Mais chut... ne répète pas ça."
+    choices:
+      - text: "Enquêter sur le vampire"
+        next_scene: "enquete_vampire"
+      - text: "Rire et retourner à ta bière"
+        next_scene: "biere"
+
+  vol_barman:
+    description: |
+      Le voleur te regarde avec un sourire en coin.
+      "Le barman a une cassette sous le comptoir. Tu veux que je te l'ouvre ?"
+    choices:
+      - text: "Oui, fais-le !"
+        next_scene: "vol_reussi"
+        cost: { resource: "or", value: -20 }
+      - text: "Non, c'est trop risqué."
+        next_scene: "entree_taverne"
+
+  vol_reussi:
+    description: |
+      Le voleur te tend une bourse pleine de pièces d'or.
+      "Tiens, prends ça. Mais ne dis à personne que c'est moi !"
+      Tu gagnes 50 pièces d'or.
+    choices:
+      - text: "Retourner à l'entrée"
+        next_scene: "entree_taverne"
+        cost: { resource: "or", value: 50 }
+
+  enquête_vampire:
+    description: |
+      Tu décides d'enquêter. La nuit tombe, et tu suis des traces de pas menant à une crypte...
+      [Fin de la scène pour cet exemple]
+    choices: []
