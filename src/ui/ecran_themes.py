@@ -2,8 +2,10 @@ from cProfile import label
 from pathlib import Path
 
 from PyQt6.QtCore import Qt, QSize
-from PyQt6.QtGui import QIcon, QPixmap, QPainter
+from PyQt6.QtGui import QIcon, QPixmap, QPainter, QFont
 from PyQt6.QtWidgets import QWidget, QGridLayout, QHBoxLayout, QPushButton, QLabel, QAbstractButton
+
+from src.ui import choix_histoire
 
 """
 todo:
@@ -113,4 +115,7 @@ class EcranThemes(QWidget):
         self.stacked_widget.setCurrentIndex(0)
 
     def valider_theme(self):
-        self.stacked_widget.setCurrentIndex(2)
+        if self.theme is not None:
+            self.stacked_widget.setCurrentIndex(2) # Affiche l'écran des scénarios
+        else:
+            self.label.setText("Veuillez sélectionner un thème avant de valider.")
