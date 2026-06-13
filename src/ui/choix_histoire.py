@@ -167,13 +167,6 @@ class EcranHistoire(QWidget):
             if child.widget():
                 child.widget().deleteLater()
 
-    def _on_scenario_selected(self, scenario_name):
-        """
-        Émet un signal quand un scénario est sélectionné.
-        :param scenario_name: Nom du scénario sélectionné.
-        """
-        self.scenario_selected.emit(scenario_name)
-        print(f"[DEBUG] Scénario sélectionné : {scenario_name} (Thème : {self.current_theme})")
 
     def valider_histoire(self):
         pass
